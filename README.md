@@ -1,4 +1,4 @@
-# AWS Top 10 Best Practices
+# AWS Top 10 Best Practices For Most Used Services
 
 Multiple checks covering industry defined best practices for AWS most used services.
 
