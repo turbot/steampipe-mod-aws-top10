@@ -4,11 +4,11 @@ repository: "https://github.com/turbot/steampipe-mod-aws-top10.git"
 
 # AWS Top 10 Best Practices Mod
 
-Run individual configuration, best practices controls or top10 benchmarks for AWS most used services.
+Run individual configuration, best practices controls or top 10 benchmarks for AWS services.
 
 ## References
 
-[AWS](https://aws.amazon.com/)
+[AWS](https://aws.amazon.com/) provides on-demand cloud computing platforms and APIs to authenticated customers on a metered pay-as-you-go basis.
 
 [Top 10 security best practices for securing data in Amazon S3](https://aws.amazon.com/blogs/security/top-10-security-best-practices-for-securing-data-in-amazon-s3/) curated set of top 10 controls for securing your data in S3.
 
@@ -31,7 +31,7 @@ steampipe plugin install aws
 Clone:
 ```sh
 git clone https://github.com/turbot/steampipe-mod-aws-top10.git
-cd steampipe-mod-aws-top10.git
+cd steampipe-mod-aws-top10
 ```
 
 Run all benchmarks:

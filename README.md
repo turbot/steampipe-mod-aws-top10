@@ -1,6 +1,6 @@
-# AWS Top10 ?? Scanning Tool
+# AWS Top 10 Best Practices
 
-Multiple checks covering industry defined best practices for AWS most used services. Includes support for AWS recommended best practices.
+Multiple checks covering industry defined best practices for AWS most used services.
 
 Includes support for:
 
@@ -28,7 +28,7 @@ steampipe plugin install aws
 
 ```sh
 git clone https://github.com/turbot/steampipe-mod-aws-top10.git
-cd steampipe-mod-aws-top10.git
+cd steampipe-mod-aws-top10
 ```
 
 4. Run all benchmarks:
@@ -54,7 +54,7 @@ steampipe query "select resource_name from steampipe_control;"
 Run a specific control:
 
 ```shell
-steampipe check control.???
+steampipe check control.s3_bucket_versioning_enabled
 ```
 
 ## Contributing
