@@ -14,7 +14,7 @@ benchmark "s3_top10" {
     control.s3_bucket_restricted_and_specific_accesss,
     control.s3_bucket_iam_policy_no_star_access,
     control.guardduty_s3_protection_enabled,
-    control.macie_enabled,
+    control.s3_bucket_scan_macie_enabled,
     control.s3_bucket_default_encryption_enabled,
     control.s3_bucket_versioning_enabled,
     control.s3_bucket_server_logging_enabled,
@@ -26,7 +26,7 @@ benchmark "s3_top10" {
 
 control "s3_bucket_public_access_block_account" {
   title         = "1 Block public S3 buckets at the organization level"
-  description   = "Designate AWS accounts for public S3 use and prevent all other S3 buckets from inadvertently becoming public by enabling S3 Block Public Access. Use Organizations SCPs to confirm that the S3 Block Public Access setting cannot be changed."
+  description   = "Designate AWS accounts for public S3 use and prevent all other S3 buckets from inadvertently becoming public by enabling S3 Block Public Access. Organizations SCPs should be used to confirm that the S3 Block Public Access setting cannot be changed. In the benchmark, it supports to query ACL settings from account setting, as the current control does not support to query Organizations SCPs details to validate. "
   sql           = query.s3_bucket_public_access_block_account.sql
 
   tags = local.s3_top10_common_tags
@@ -56,10 +56,10 @@ control "guardduty_s3_protection_enabled" {
   tags = local.s3_top10_common_tags
 }
 
-control "macie_enabled" {
+control "s3_bucket_scan_macie_enabled" {
   title         = "5 Use Macie to scan for sensitive data outside of designated areas"
   description   = "Macie helps you discover and protect your sensitive data by using machine learning to automatically review and classify your data in S3. Enabling Macie organization wide is a straightforward and cost-efficient method for you to get a central, continuously updated view of your entire organization’s S3 environment and monitor your adherence to security best practices through a central console. Macie continually evaluates all buckets for encryption and access control, alerting you of buckets that are public, unencrypted, or shared or replicated outside of your organization."
-  sql           = query.macie_enabled.sql
+  sql           = query.s3_bucket_scan_macie_enabled.sql
 
   tags = local.s3_top10_common_tags
 }
