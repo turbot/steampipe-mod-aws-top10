@@ -19,7 +19,7 @@ benchmark "s3_top10" {
     control.s3_bucket_versioning_enabled,
     control.s3_bucket_server_logging_enabled,
     control.s3_bucket_cross_region_replication_enabled,
-    control.s3_bucket_cloudtrail_data_events_enabled
+    control.securityhub_with_fsbp_enabled
   ]
   tags = local.s3_top10_common_tags
 }
@@ -96,10 +96,10 @@ control "s3_bucket_cross_region_replication_enabled" {
   tags = local.s3_top10_common_tags
 }
 
-control "s3_bucket_cloudtrail_data_events_enabled" {
+control "securityhub_with_fsbp_enabled" {
   title         = "10 Monitor S3 using Security Hub and CloudWatch Logs"
-  description   = "Security Hub provides you with a comprehensive view of your security state in AWS and helps you check your environment against security industry standards and best practices. Security Hub collects security data from across AWS accounts, services, and supported third-party partner products and helps you analyze your security trends and identify the highest priority security issues."
-  sql           = query.s3_bucket_cloudtrail_data_events_enabled.sql
+  description   = "Security Hub provides you with a comprehensive view of your security state in AWS and helps you check your environment against security industry standards and best practices. Security Hub collects security data from across AWS accounts, services, and supported third-party partner products and helps you analyze your security trends and identify the highest priority security issues. Security Hub standards subscription enables the AWS Foundational Security Best Practices, a set of controls that detect when your deployed accounts and resources deviate from security best practices, and provides clear remediation steps. The controls contain best practices from across multiple AWS services, including S3."
+  sql           = query.securityhub_with_fsbp_enabled.sql
 
   tags = local.s3_top10_common_tags
 }
