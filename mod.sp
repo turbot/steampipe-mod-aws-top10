@@ -5,7 +5,7 @@ mod "aws_top10" {
   color          = "#FF9900"
   documentation  = file("./docs/index.md")
   icon           = "/images/mods/turbot/aws-compliance.svg"
-  categories     = ["AWS", "CIS", "Compliance", "PCI DSS", "Public Cloud", "Security"]
+  categories     = ["aws", "top10", "compliance", "public cloud", "security"]
 
   opengraph {
     title         = "Steampipe Mod for AWS Top 10"

@@ -1,14 +1,13 @@
 locals {
-  s3_top10_common_tags = {
+  s3_top10_common_tags = merge(local.aws_top10_common_tags, {
     s3_top10 = "true"
-    plugin    = "aws"
-  }
+  })
 }
 
 benchmark "s3_top10" {
   title         = "S3 Top 10 Controls"
   description   = "Top 10 security best practices for securing data in Amazon S3."
-  documentation = file("./s3_top10/docs/s3_top10.md")
+  documentation = file("./aws_top10/docs/s3_top10.md")
   children = [
     control.s3_bucket_public_access_block_account,
     control.s3_bucket_restricted_and_specific_accesss,
