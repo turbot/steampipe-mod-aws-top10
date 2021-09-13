@@ -6,7 +6,7 @@ locals {
 }
 
 benchmark "aws_top10" {
-  title         = "AWS Top 10 Controls"
+  title         = "Top 10 Controls"
   description   = "Top 10 security best practices for securing data in AWS."
   children = [
     benchmark.s3_top10
