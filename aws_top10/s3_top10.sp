@@ -25,7 +25,7 @@ benchmark "s3_top10" {
 
 control "s3_bucket_public_access_block_account" {
   title         = "1 Block public S3 buckets at the organization level"
-  description   = "Designate AWS accounts for public S3 use and prevent all other S3 buckets from inadvertently becoming public by enabling S3 Block Public Access. Organizations SCPs should be used to confirm that the S3 Block Public Access setting cannot be changed. In the benchmark, it supports to query ACL settings from account setting, as the current control does not support to query Organizations SCPs details to validate. "
+  description   = "Designate AWS accounts for public S3 use and prevent all other S3 buckets from inadvertently becoming public by enabling S3 Block Public Access. Organizations SCPs should be used to confirm that the S3 Block Public Access setting cannot be changed. `Note:` In this control, it supports to query `Block Public Access` settings for the account. The current control does not support to query Organizations SCPs details to validate."
   sql           = query.s3_bucket_public_access_block_account.sql
 
   tags = local.s3_top10_common_tags
@@ -41,7 +41,7 @@ control "s3_bucket_restricted_and_specific_accesss" {
 
 control "s3_bucket_iam_policy_no_star_access" {
   title         = "3 Ensure that any identity-based policies don’t use wildcard actions"
-  description   = "List buckets that do not block public access."
+  description   = "Identity policies are policies assigned to AWS Identity and Access Management (IAM) users and roles and should follow the principle of least privilege to help prevent inadvertent access or changes to resources. Establishing least privilege identity policies includes defining specific actions such as `S3:GetObject` or `S3:PutObject` instead of `S3:*`."
   sql           = query.s3_bucket_iam_policy_no_star_access.sql
 
   tags = local.s3_top10_common_tags
@@ -49,7 +49,7 @@ control "s3_bucket_iam_policy_no_star_access" {
 
 control "guardduty_s3_protection_enabled" {
   title         = "4 Enable S3 protection in GuardDuty to detect suspicious activities"
-  description   = "Turning this on enables GuardDuty to continuously monitor and profile S3 data access events (data plane operations) and S3 configuration (control plane APIs) to detect suspicious activities. Activities such as requests coming from unusual geolocations, disabling of preventative controls, and API call patterns consistent with an attempt to discover misconfigured bucket permissions."
+  description   = "GuardDuty enables continuously monitor and profile S3 data access events (data plane operations) and S3 configuration (control plane APIs) to detect suspicious activities. Activities such as requests coming from unusual geolocations, disabling of preventative controls, and API call patterns consistent with an attempt to discover misconfigured bucket permissions. To achieve this, GuardDuty uses a combination of anomaly detection, machine learning, and continuously updated threat intelligence."
   sql           = query.guardduty_s3_protection_enabled.sql
 
   tags = local.s3_top10_common_tags
@@ -65,7 +65,7 @@ control "s3_bucket_scan_macie_enabled" {
 
 control "s3_bucket_default_encryption_enabled" {
   title         = "6 Encrypt your data in S3"
-  description   = "With S3 server-side encryption, S3 encrypts your data at the object level as it writes it to disks in AWS data centers and decrypts it when you access it. As long as you authenticate your request and you have access permissions, there is no difference in the way you access encrypted or unencrypted objects."
+  description   = "With S3 server-side encryption, S3 encrypts your data at the object level as it writes it to disks in AWS data centers and decrypts it when you access it. S3 provides multiple options for managing which encryption key AWS uses to encrypt your S3 data. This control checks the `Server-side encryption` status the bucket irrespective of any encryption key type used."
   sql           = query.s3_bucket_default_encryption_enabled.sql
 
   tags = local.s3_top10_common_tags
@@ -73,7 +73,7 @@ control "s3_bucket_default_encryption_enabled" {
 
 control "s3_bucket_versioning_enabled" {
   title         = "7 Protect data in S3 from accidental deletion using S3 Versioning and S3 Object Lock"
-  description   = "Amazon S3 is designed for durability of 99.999999999 percent of objects across multiple Availability Zones, is resilient against events that impact an entire zone, and designed for 99.99 percent availability over a given year. In many cases, when it comes to strategies to back up your data in S3, it’s about protecting buckets and objects from accidental deletion, in which case S3 Versioning can be used to preserve, retrieve, and restore every version of every object stored in your buckets. S3 Versioning lets you keep multiple versions of an object in the same bucket and can help you recover objects from accidental deletion or overwrite. Keep in mind this feature has costs associated."
+  description   = "Amazon S3 is designed for durability of 99.999999999 percent of objects across multiple Availability Zones, is resilient against events that impact an entire zone, and designed for 99.99 percent availability over a given year. In many cases, when it comes to strategies to back up your data in S3, it’s about protecting buckets and objects from accidental deletion, in which case S3 Versioning can be used to preserve, retrieve, and restore every version of every object stored in your buckets. S3 Versioning lets you keep multiple versions of an object in the same bucket and can help you recover objects from accidental deletion or overwrite. Keep in mind this feature has costs associated. S3 `Object Lock` is another feature that helps you mitigate data loss by storing objects using a write-once-read-many (WORM) model. By using `Object Lock`, you can prevent an object from being overwritten or deleted for a fixed time or indefinitely. `Note:` Enable Object Lock only if you need to prevent objects from being deleted to have data integrity and regulatory compliance."
   sql           = query.s3_bucket_versioning_enabled.sql
 
   tags = local.s3_top10_common_tags
@@ -81,7 +81,7 @@ control "s3_bucket_versioning_enabled" {
 
 control "s3_bucket_server_logging_enabled" {
   title         = "8 Enable logging for S3 using CloudTrail and S3 server access logging"
-  description   = "Amazon S3 is integrated with CloudTrail. CloudTrail captures a subset of API calls, including calls from the S3 console and code calls to the S3 APIs. In addition, you can enable CloudTrail data events for all your buckets or for a list of specific buckets. Keep in mind that a very active S3 bucket can generate a large amount of log data and increase CloudTrail costs. If this is concern around cost then consider enabling this additional logging only for S3 buckets with critical data."
+  description   = "Amazon S3 is integrated with CloudTrail. CloudTrail captures a subset of API calls, including calls from the S3 console and code calls to the S3 APIs. In addition, you can enable CloudTrail data events for all your buckets or for a list of specific buckets. Keep in mind that a very active S3 bucket can generate a large amount of log data and increase CloudTrail costs. If this is concern around cost then consider enabling this additional logging only for S3 buckets with critical data. Server access logging provides detailed records of the requests that are made to a bucket. Server access logs can assist you in security and access audits. This control checks `Server access logging` of S3 buckets in the account."
   sql           = query.s3_bucket_server_logging_enabled.sql
 
   tags = local.s3_top10_common_tags
