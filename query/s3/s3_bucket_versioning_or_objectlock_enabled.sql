@@ -6,7 +6,7 @@ select
     else 'alarm'
   end status,
   case
-    when object_lock_configuration ->> 'ObjectLockEnabled' = 'Enabled' then name || ' object Lock enabled.'
+    when object_lock_configuration ->> 'ObjectLockEnabled' = 'Enabled' then name || ' object lock enabled.'
     when versioning_enabled then name || ' versioning enabled.'
     else name || ' neither versioning nor object Lock enabled.'
   end reason,

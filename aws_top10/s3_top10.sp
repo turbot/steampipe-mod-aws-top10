@@ -10,15 +10,15 @@ benchmark "s3_top10" {
   documentation = file("./aws_top10/docs/s3_top10.md")
   children = [
     control.s3_bucket_public_access_block_account,
-    control.s3_bucket_restricted_and_specific_accesss,
+    control.s3_bucket_restricted_accesss,
     control.s3_bucket_iam_policy_no_star_access,
     control.guardduty_s3_protection_enabled,
-    control.s3_bucket_scan_macie_enabled,
+    control.macie_enabled,
     control.s3_bucket_default_encryption_enabled,
     control.s3_bucket_versioning_or_objectlock_enabled,
     control.s3_bucket_server_logging_enabled,
     control.s3_bucket_cross_region_replication_enabled,
-    control.securityhub_with_fsbp_enabled
+    control.securityhub_with_foundational_security_standard_enabled
   ]
   tags = local.s3_top10_common_tags
 }
@@ -31,10 +31,10 @@ control "s3_bucket_public_access_block_account" {
   tags = local.s3_top10_common_tags
 }
 
-control "s3_bucket_restricted_and_specific_accesss" {
+control "s3_bucket_restricted_accesss" {
   title         = "2 Use bucket policies to verify all access granted is restricted and specific"
-  description   = "Amazon S3 bucket policy is restricted to specific AWS principals, federated users, service principals, IP addresses, or VPCs that you provide. A bucket policy that allows a wildcard identity such as Principal “*” can potentially be accessed by anyone. A bucket policy that allows a wildcard action “*” can potentially allow a user to perform any action in the bucket."
-  sql           = query.s3_bucket_restricted_and_specific_accesss.sql
+  description   = "Amazon S3 bucket policy is restricted to specific AWS principals, federated users, service principals, IP addresses, or VPCs that you provide. A bucket policy that allows a wildcard identity such as Principal `*` can potentially be accessed by anyone. A bucket policy that allows a wildcard action `*` can potentially allow a user to perform any action in the bucket."
+  sql           = query.s3_bucket_restricted_accesss.sql
 
   tags = local.s3_top10_common_tags
 }
@@ -55,10 +55,10 @@ control "guardduty_s3_protection_enabled" {
   tags = local.s3_top10_common_tags
 }
 
-control "s3_bucket_scan_macie_enabled" {
+control "macie_enabled" {
   title         = "5 Use Macie to scan for sensitive data outside of designated areas"
   description   = "Macie helps you discover and protect your sensitive data by using machine learning to automatically review and classify your data in S3. Enabling Macie organization wide is a straightforward and cost-efficient method for you to get a central, continuously updated view of your entire organization’s S3 environment and monitor your adherence to security best practices through a central console. Macie continually evaluates all buckets for encryption and access control, alerting you of buckets that are public, unencrypted, or shared or replicated outside of your organization."
-  sql           = query.s3_bucket_scan_macie_enabled.sql
+  sql           = query.macie_enabled.sql
 
   tags = local.s3_top10_common_tags
 }
@@ -95,10 +95,10 @@ control "s3_bucket_cross_region_replication_enabled" {
   tags = local.s3_top10_common_tags
 }
 
-control "securityhub_with_fsbp_enabled" {
+control "securityhub_with_foundational_security_standard_enabled" {
   title         = "10 Monitor S3 using Security Hub and CloudWatch Logs"
   description   = "Security Hub provides you with a comprehensive view of your security state in AWS and helps you check your environment against security industry standards and best practices. Security Hub collects security data from across AWS accounts, services, and supported third-party partner products and helps you analyze your security trends and identify the highest priority security issues. Security Hub standards subscription enables the AWS Foundational Security Best Practices, a set of controls that detect when your deployed accounts and resources deviate from security best practices, and provides clear remediation steps. The controls contain best practices from across multiple AWS services, including S3."
-  sql           = query.securityhub_with_fsbp_enabled.sql
+  sql           = query.securityhub_with_foundational_security_standard_enabled.sql
 
   tags = local.s3_top10_common_tags
 }
