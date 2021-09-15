@@ -54,7 +54,7 @@ steampipe query "select resource_name from steampipe_control;"
 Run a specific control:
 
 ```shell
-steampipe check control.s3_bucket_versioning_enabled
+steampipe check control.s3_bucket_versioning_objectlock_enabled
 ```
 
 ## Contributing

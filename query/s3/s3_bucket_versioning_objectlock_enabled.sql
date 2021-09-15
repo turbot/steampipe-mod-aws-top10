@@ -8,7 +8,7 @@ select
   case
     when object_lock_configuration ->> 'ObjectLockEnabled' = 'Enabled' then name || ' object lock enabled.'
     when versioning_enabled then name || ' versioning enabled.'
-    else name || ' neither versioning nor object Lock enabled.'
+    else name || ' neither versioning nor object lock enabled.'
   end reason,
   -- Additional Dimensions
   region,
