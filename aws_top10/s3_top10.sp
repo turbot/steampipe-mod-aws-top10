@@ -65,7 +65,7 @@ control "macie_enabled" {
 
 control "s3_bucket_default_encryption_enabled" {
   title         = "6 Encrypt your data in S3"
-  description   = "With S3 server-side encryption, S3 encrypts your data at the object level as it writes it to disks in AWS data centers and decrypts it when you access it. S3 provides multiple options for managing which encryption key AWS uses to encrypt your S3 data. This control checks the `Server-side encryption` status the bucket irrespective of any encryption key type used."
+  description   = "With S3 server-side encryption, S3 encrypts your data at the object level as it writes it to disks in AWS data centers and decrypts it when you access it. S3 provides multiple options for managing which encryption key AWS uses to encrypt your S3 data. This control checks the `Server-side encryption` status of the bucket irrespective of any encryption key type used."
   sql           = query.s3_bucket_default_encryption_enabled.sql
 
   tags = local.s3_top10_common_tags
@@ -81,7 +81,7 @@ control "s3_bucket_versioning_objectlock_enabled" {
 
 control "s3_bucket_server_logging_enabled" {
   title         = "8 Enable logging for S3 using CloudTrail and S3 server access logging"
-  description   = "Amazon S3 is integrated with CloudTrail. CloudTrail captures a subset of API calls, including calls from the S3 console and code calls to the S3 APIs. In addition, you can enable CloudTrail data events for all your buckets or for a list of specific buckets. Keep in mind that a very active S3 bucket can generate a large amount of log data and increase CloudTrail costs. If this is concern around cost then consider enabling this additional logging only for S3 buckets with critical data. Server access logging provides detailed records of the requests that are made to a bucket. Server access logs can assist you in security and access audits. This control checks `Server access logging` of S3 buckets in the account."
+  description   = "Amazon S3 is integrated with CloudTrail. CloudTrail captures a subset of API calls, including calls from the S3 console and code calls to the S3 APIs. In addition, you can enable CloudTrail data events for all your buckets or for a list of specific buckets. Keep in mind that a very active S3 bucket can generate a large amount of log data and increase CloudTrail costs. If this is concern around cost then consider enabling this additional logging only for S3 buckets with critical data. Server access logging provides detailed records of the requests that are made to a bucket. Server access logs can assist you in security and access audits. This control checks `Server access logging` status of S3 buckets in the account."
   sql           = query.s3_bucket_server_logging_enabled.sql
 
   tags = local.s3_top10_common_tags
@@ -97,7 +97,7 @@ control "s3_bucket_cross_region_replication_enabled" {
 
 control "securityhub_with_foundational_security_standard_enabled" {
   title         = "10 Monitor S3 using Security Hub and CloudWatch Logs"
-  description   = "Security Hub provides you with a comprehensive view of your security state in AWS and helps you check your environment against security industry standards and best practices. Security Hub collects security data from across AWS accounts, services, and supported third-party partner products and helps you analyze your security trends and identify the highest priority security issues. Security Hub standards subscription enables the AWS Foundational Security Best Practices, a set of controls that detect when your deployed accounts and resources deviate from security best practices, and provides clear remediation steps. The controls contain best practices from across multiple AWS services, including S3."
+  description   = "Security Hub provides you with a comprehensive view of your security state in AWS and helps you check your environment against security industry standards and best practices. Security Hub collects security data from across AWS accounts, services, and supported third-party partner products and helps you analyze your security trends and identify the highest priority security issues. Security Hub standards subscription enables `AWS Foundational Security Best Practices`, a set of controls that detect when your deployed accounts and resources deviate from security best practices, and provides clear remediation steps. The control checks `AWS Foundational Security Best Practices` standard in Security Hub for the account."
   sql           = query.securityhub_with_foundational_security_standard_enabled.sql
 
   tags = local.s3_top10_common_tags
