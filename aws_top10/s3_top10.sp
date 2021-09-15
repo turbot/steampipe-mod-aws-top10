@@ -15,7 +15,7 @@ benchmark "s3_top10" {
     control.guardduty_s3_protection_enabled,
     control.macie_enabled,
     control.s3_bucket_default_encryption_enabled,
-    control.s3_bucket_versioning_or_objectlock_enabled,
+    control.s3_bucket_versioning_objectlock_enabled,
     control.s3_bucket_server_logging_enabled,
     control.s3_bucket_cross_region_replication_enabled,
     control.securityhub_with_foundational_security_standard_enabled
@@ -71,10 +71,10 @@ control "s3_bucket_default_encryption_enabled" {
   tags = local.s3_top10_common_tags
 }
 
-control "s3_bucket_versioning_or_objectlock_enabled" {
+control "s3_bucket_versioning_objectlock_enabled" {
   title         = "7 Protect data in S3 from accidental deletion using S3 Versioning and S3 Object Lock"
   description   = "Amazon S3 is designed for durability of 99.999999999 percent of objects across multiple Availability Zones, is resilient against events that impact an entire zone, and designed for 99.99 percent availability over a given year. In many cases, when it comes to strategies to back up your data in S3, it’s about protecting buckets and objects from accidental deletion, in which case S3 Versioning can be used to preserve, retrieve, and restore every version of every object stored in your buckets. S3 Versioning lets you keep multiple versions of an object in the same bucket and can help you recover objects from accidental deletion or overwrite. Keep in mind this feature has costs associated. S3 `Object Lock` is another feature that helps you mitigate data loss by storing objects using a write-once-read-many (WORM) model. By using `Object Lock`, you can prevent an object from being overwritten or deleted for a fixed time or indefinitely. `Note:` Enable Object Lock only if you need to prevent objects from being deleted to have data integrity and regulatory compliance."
-  sql           = query.s3_bucket_versioning_or_objectlock_enabled.sql
+  sql           = query.s3_bucket_versioning_objectlock_enabled.sql
 
   tags = local.s3_top10_common_tags
 }
