@@ -12,11 +12,12 @@ with bad_policies as (
     and resource = '*'
     and (
       (action = '*'
-      or action = '*:*'
+      -- This will be restrictive to any service:* inclusive s3
+      or action like '%:*'
       )
-  )
+    )
   group by
-    arn
+   arn
 )
 select
   -- Required Columns
@@ -33,4 +34,4 @@ from
   aws_iam_policy as p
   left join bad_policies as bad on p.arn = bad.arn
 where
-  p.arn not like 'arn:aws:iam::aws:policy%'
+  p.arn not like 'arn:aws:iam::aws:policy%';

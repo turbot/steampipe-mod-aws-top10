@@ -2,6 +2,9 @@
 
 Multiple checks covering industry defined best practices for AWS most used services.
 
+
+![image](https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top10/main/docs/aws-top-ten-social-graphic.png)
+
 Includes support for:
 
 - [Top 10 security best practices for securing data in Amazon S3](https://aws.amazon.com/blogs/security/top-10-security-best-practices-for-securing-data-in-amazon-s3/)
