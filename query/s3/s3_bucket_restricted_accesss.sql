@@ -23,8 +23,8 @@ select
     else 'alarm'
   end as status,
   case
-    when b.arn is null then title || ' all access granted is restricted and specific.'
-    else title || ' access granted is not restricted and specific.'
+    when b.arn is null then title || ' granted access is restricted.'
+    else title || ' granted access is unrestricted.'
   end as reason,
   -- Additionl Dimensions
   a.region,
