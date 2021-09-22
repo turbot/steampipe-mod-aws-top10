@@ -1,6 +1,6 @@
-# AWS Top 10 Best Practices For Most Used Services
+# AWS Top 10 Best Practices Mod
 
-Run individual configuration, best practices controls or top 10 benchmarks for AWS services.
+Run individual configuration and security controls or full benchmarks for top 10 best practices controls across all your AWS accounts using Steampipe.
 
 ![image](https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top10/main/docs/aws-top-ten-social-graphic.png)
 
