@@ -46,7 +46,7 @@ steampipe check benchmark.s3_top_10
 
 Run a specific control:
 ```shell
-steampipe check control.s3_bucket_versioning_enabled
+steampipe check control.s3_bucket_server_logging_enabled
 ```
 
 ### Credentials
