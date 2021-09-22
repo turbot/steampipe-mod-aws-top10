@@ -1,7 +1,7 @@
 mod "aws_top10" {
   # hub metadata
   title         = "AWS Top 10"
-  description   = "Steampipe mod for checking if Amazon Web Services (AWS) resources are compliant with top 10 recommended best practices."
+  description   = "This Steampipe mod checks your Amazon Web Services (AWS) resources are compliant with top 10 recommended best practices."
   color         = "#FF9900"
   documentation = file("./docs/index.md")
   icon          = "/images/mods/turbot/aws-top-ten.svg"
@@ -9,7 +9,7 @@ mod "aws_top10" {
 
   opengraph {
     title       = "Steampipe Mod for AWS Top 10"
-    description = "Steampipe mod for checking if Amazon Web Services (AWS) resources are compliant with top 10 recommended best practices. Open source CLI. No DB required."
+    description = "This Steampipe mod checks your Amazon Web Services (AWS) resources are compliant with top 10 recommended best practices."
     image       = "/images/mods/turbot/aws-top-ten-social-graphic.png"
   }
 }

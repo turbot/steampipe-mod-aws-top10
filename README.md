@@ -1,7 +1,6 @@
 # AWS Top 10 Best Practices For Most Used Services
 
-Multiple checks covering industry defined best practices for AWS most used services.
-
+Run individual configuration, best practices controls or top 10 benchmarks for AWS services.
 
 ![image](https://raw.githubusercontent.com/turbot/steampipe-mod-aws-top10/main/docs/aws-top-ten-social-graphic.png)
 
