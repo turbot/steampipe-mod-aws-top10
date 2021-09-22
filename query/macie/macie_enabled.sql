@@ -16,4 +16,4 @@ select
 from
   aws_region as a
   left join aws_macie2_classification_job m on m.region = a.region
-  group by m.job_id, m.arn, a.region, a.account_id
+  group by m.job_id, m.arn, a.region, a.account_id;
