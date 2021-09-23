@@ -18,8 +18,8 @@ Run individual configuration and security controls or full benchmarks for top 10
 
 ## Documentation
 
-- **[Benchmarks and controls →](https://hub.steampipe.io/mods/turbot/steampipe-mod-aws-top10/controls)**
-- **[Named queries →](https://hub.steampipe.io/mods/turbot/steampipe-mod-aws-top10/queries)**
+- **[Benchmarks and controls →](https://hub.steampipe.io/mods/turbot/aws_top10/controls)**
+- **[Named queries →](https://hub.steampipe.io/mods/turbot/aws_top10/queries)**
 
 ## Get started
 
